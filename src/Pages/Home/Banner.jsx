@@ -3,28 +3,26 @@ const Banner = () => {
     <div
       className="hero min-h-screen rounded-lg"
       style={{
-        backgroundImage: `url("https://i.ibb.co/zGVBgsF/pexels-albin-berlin-919073.jpg")`,
+        backgroundImage: `url("https://i.ibb.co/Pz8tVZd/main-banner2.png")`,
       }}
     >
-      <div className="hero-overlay bg-opacity-60"></div>
-      <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-4xl">
+      <div className="hero-content text-left text-neutral-content">
+        <div className="ml-5">
           <img
             src="https://i.ibb.co/1dKFr4F/img1-removebg-preview.png"
             alt="big sale"
-            className="mx-auto mb-2"
+            className="mb-2"
           />
           <h1 className="mb-6 text-6xl font-bold">
-            Where Fun Takes the Wheel!
+            Where Fun <br /> Takes the Wheel!
           </h1>
-          <p className="mb-6">
+          <p
+            className="mb-6 w-2/5
+          "
+          >
             Welcome to the ultimate destination for car toy enthusiasts! Explore
             a thrilling world where your imagination takes the driver's seat.
-            Discover an impressive collection of meticulously crafted car toys
-            that will ignite your passion for speed and adventure. Whether
-            you're a fan of classic cars, sleek supercars, or rugged
-            off-roaders, our curated selection will transport you to a world of
-            excitement and endless play possibilities
+            Discover an impressive collection of meticulously crafted car toys.
           </p>
           <button className="btn btn-outline text-white hover:bg-[#BC1823]">
             Get Started
