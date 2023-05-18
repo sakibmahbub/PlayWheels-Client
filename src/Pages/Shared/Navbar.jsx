@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   return (
-    <div className=" px-4 py-5 bg-[#ffffff] mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-24 relative rounded-lg z-20">
+    <div className="bg-[#ffffff] mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-20 lg:px-20 relative rounded-lg z-20">
       <div className="relative flex items-center justify-between">
         <Link to="/" className="inline-flex items-center">
           <img
@@ -17,7 +17,7 @@ const Navbar = () => {
         </Link>
 
         {/* Nav Items Section */}
-        <ul className="items-center font-semibold hidden space-x-8 lg:flex">
+        <ul className="items-center font-semibold hidden space-x-8 lg:flex uppercase">
           <li>
             <NavLink
               to="/"
