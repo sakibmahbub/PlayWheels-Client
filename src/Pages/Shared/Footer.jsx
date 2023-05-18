@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 bg-[#F7F7F7] text-base-content">
+      <footer className="footer p-10 w-full bg-[#F7F7F7] text-base-content">
         <div className="w-52 h-52">
           <img src="https://i.ibb.co/K78JKYy/1.png" alt="playwheels" />
         </div>
