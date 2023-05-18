@@ -89,7 +89,7 @@ const Navbar = () => {
             } */}
             {
               <Link to="/login">
-                <button className="btn bg-[#BC1823] btn-sm hover:bg-[#007BFF]">
+                <button className="btn border-none bg-[#BC1823] btn-sm hover:bg-yellow-500">
                   Login
                 </button>
               </Link>

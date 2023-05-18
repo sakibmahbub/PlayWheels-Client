@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 w-full bg-[#F7F7F7] text-base-content">
+      <footer className="footer p-10 w-full bg-yellow-50 text-base-content">
         <div className="w-52 h-52">
           <img src="https://i.ibb.co/K78JKYy/1.png" alt="playwheels" />
         </div>
@@ -26,7 +26,7 @@ const Footer = () => {
           <a className="link link-hover">Cookie policy</a>
         </div>
       </footer>
-      <footer className="footer px-10 py-4 border-t bg-[#F7F7F7] text-base-content border-base-300">
+      <footer className="footer px-10 py-4 border-t  bg-yellow-50 text-base-content border-base-300">
         <div className="items-center">
           <p>Copyright 2023 | All Rights Reserved PlayWheels</p>
         </div>

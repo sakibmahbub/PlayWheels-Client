@@ -24,7 +24,7 @@ const Banner = () => {
             a thrilling world where your imagination takes the driver's seat.
             Discover an impressive collection of meticulously crafted car toys.
           </p>
-          <button className="btn btn-outline text-white hover:bg-[#BC1823]">
+          <button className="btn btn-outline text-white hover:bg-yellow-500">
             Get Started
           </button>
         </div>
