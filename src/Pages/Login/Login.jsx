@@ -1,7 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
+
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    login(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        if (error.code === "auth/invalid-email") {
+          setError("Invalid email address");
+        } else if (error.code === "auth/wrong-password") {
+          setError("Incorrect password");
+        } else if (error.code === "auth/weak-password") {
+          setError("Password should be at least 6 characters");
+        } else if (error.code === "auth/empty-fields") {
+          setError("Email and password fields cannot be empty");
+        } else {
+          setError("An error occurred. Please try again later.");
+        }
+      });
+  };
+
   return (
     <div>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -10,7 +48,7 @@ const Login = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl lg:text-3xl ">
               Please Login
             </h1>
-            <form className="space-y-4 md:space-y-6 ">
+            <form onSubmit={handleLogin} className="space-y-4 md:space-y-6 ">
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900 ">
                   Email
@@ -52,7 +90,7 @@ const Login = () => {
                   <span> Register now</span>
                 </Link>
               </p>
-              {/* <p className="text-sm font-light text-red-800 ">{error}</p> */}
+              <p className="text-sm font-light text-red-800 ">{error}</p>
             </form>
 
             <div className="flex justify-start gap-2 mt-10">
