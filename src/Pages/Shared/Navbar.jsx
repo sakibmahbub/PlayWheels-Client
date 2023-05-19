@@ -82,19 +82,6 @@ const Navbar = () => {
           </li>
           <li>
             {user && (
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img
-                    src={user.photoURL}
-                    alt={user.displayName}
-                    title={user.displayName}
-                  />
-                </div>
-              </label>
-            )}
-          </li>
-          <li>
-            {user && (
               <button
                 className="btn bg-yellow-500 btn-sm border-none"
                 onClick={handleLogout}
@@ -108,6 +95,19 @@ const Navbar = () => {
                   Login
                 </button>
               </Link>
+            )}
+          </li>
+          <li>
+            {user && (
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    src={user.photoURL}
+                    alt={user.displayName}
+                    title={user.displayName}
+                  />
+                </div>
+              </label>
             )}
           </li>
         </ul>

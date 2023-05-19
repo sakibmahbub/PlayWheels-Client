@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div>
@@ -14,16 +16,24 @@ const Footer = () => {
         </div>
         <div>
           <span className="footer-title">Useful Links</span>
-          <a className="link link-hover">Add Toys</a>
-          <a className="link link-hover">My Toys</a>
-          <a className="link link-hover">All Toys</a>
-          <a className="link link-hover">Blogs</a>
+          <Link to="/addatoy" className="link link-hover">
+            Add Toys
+          </Link>
+          <Link to="/mytoys" className="link link-hover">
+            My Toys
+          </Link>
+          <Link to="/alltoys" className="link link-hover">
+            All Toys
+          </Link>
+          <Link to="/blog" className="link link-hover">
+            Blogs
+          </Link>
         </div>
         <div>
-          <span className="footer-title">Legal</span>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <span className="footer-title">Contact Info</span>
+          <a className="link link-hover">Phone : 123456789</a>
+          <a className="link link-hover">Email : sakibmahbub@gmail.com</a>
+          <a className="link link-hover">Address : Chittagong, Bangladesh</a>
         </div>
       </footer>
       <footer className="footer px-10 py-4 border-t  bg-yellow-50 text-base-content border-base-300">

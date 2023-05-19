@@ -6,6 +6,7 @@ const Register = () => {
   const { createUser, googleSignIn, updateUserProfile } =
     useContext(AuthContext);
 
+  const [error, setError] = useState("");
   const [createdUser, setCreatedUser] = useState(null);
 
   const handleGoogle = () => {
@@ -37,7 +38,17 @@ const Register = () => {
         console.log(createdUser);
       })
       .catch((error) => {
-        console.log(error);
+        if (error.code === "auth/invalid-email") {
+          setError("Invalid email address");
+        } else if (error.code === "auth/wrong-password") {
+          setError("Incorrect password");
+        } else if (error.code === "auth/weak-password") {
+          setError("Password should be at least 6 characters");
+        } else if (error.code === "auth/empty-fields") {
+          setError("Email and password fields cannot be empty");
+        } else {
+          setError("An error occurred. Please try again later.");
+        }
       });
   };
   return (
@@ -113,7 +124,7 @@ const Register = () => {
                   <span> Login now</span>
                 </Link>
               </p>
-              {/* <p className="text-sm font-light text-red-800 ">{error}</p> */}
+              <p className="text-sm font-light text-red-800 ">{error}</p>
             </form>
 
             <div className="flex justify-start gap-2 mt-10">
