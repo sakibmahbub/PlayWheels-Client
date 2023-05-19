@@ -4,13 +4,24 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, googleSignIn } = useContext(AuthContext);
 
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
+  const handleGoogle = () => {
+    googleSignIn()
+      .then((result) => {
+        const newUser = result.user;
+        console.log(newUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -94,7 +105,10 @@ const Login = () => {
             </form>
 
             <div className="flex justify-start gap-2 mt-10">
-              <button className="btn bg-white text-gray-500 hover:bg-white btn-sm">
+              <button
+                onClick={handleGoogle}
+                className="btn bg-white hover:bg-white text-gray-500 btn-sm"
+              >
                 <FaGoogle />
                 <span
                   className="ml-1

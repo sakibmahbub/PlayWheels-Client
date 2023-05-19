@@ -3,7 +3,18 @@ import { FaGoogle } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, googleSignIn } = useContext(AuthContext);
+
+  const handleGoogle = () => {
+    googleSignIn()
+      .then((result) => {
+        const newUser = result.user;
+        console.log(newUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -99,7 +110,10 @@ const Register = () => {
             </form>
 
             <div className="flex justify-start gap-2 mt-10">
-              <button className="btn bg-white text-gray-500 hover:bg-white btn-sm">
+              <button
+                onClick={handleGoogle}
+                className="btn bg-white text-gray-500 hover:bg-white btn-sm"
+              >
                 <FaGoogle />
                 <span
                   className="ml-1
