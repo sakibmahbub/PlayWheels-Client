@@ -1,10 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+
+  const handleLogout = () => {
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="bg-[#ffffff] mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-20 lg:px-20 relative rounded-lg z-20">
       <div className="relative flex items-center justify-between">
@@ -69,31 +81,34 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            {
+            {user && (
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                   <img
-                  // src={user.photoURL}
-                  // alt={user.displayName}
-                  // title={user.displayName}
+                    src={user.photoURL}
+                    alt={user.displayName}
+                    title={user.displayName}
                   />
                 </div>
               </label>
-            }
+            )}
           </li>
           <li>
-            {/* {
-              <button className="btn bg-[#BC1823] btn-sm hover:bg-[#007BFF]">
+            {user && (
+              <button
+                className="btn bg-yellow-500 btn-sm border-none"
+                onClick={handleLogout}
+              >
                 Logout
               </button>
-            } */}
-            {
+            )}
+            {!user && (
               <Link to="/login">
-                <button className="btn border-none bg-[#BC1823] btn-sm hover:bg-yellow-500">
+                <button className="btn bg-yellow-500 btn-sm border-none">
                   Login
                 </button>
               </Link>
-            }
+            )}
           </li>
         </ul>
 
@@ -115,7 +130,7 @@ const Navbar = () => {
                   <div>
                     <Link to="/" className="inline-flex items-center">
                       <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                        Play<span className="text-[#BC1823]">Wheels</span>
+                        Play<span className="text-yellow-500">Wheels</span>
                       </span>
                     </Link>
                   </div>
@@ -162,18 +177,21 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li>
-                      {/* {
-                        <button className="btn bg-[#BC1823] btn-sm hover:bg-[#007BFF]">
+                      {user && (
+                        <button
+                          className="btn bg-yellow-500 btn-sm border-none"
+                          onClick={handleLogout}
+                        >
                           Logout
                         </button>
-                      } */}
-                      {
+                      )}
+                      {!user && (
                         <Link to="/login">
-                          <button className="btn bg-[#BC1823] btn-sm hover:bg-[#007BFF]">
+                          <button className="btn bg-yellow-500 btn-sm border-none">
                             Login
                           </button>
                         </Link>
-                      }
+                      )}
                     </li>
                   </ul>
                 </nav>

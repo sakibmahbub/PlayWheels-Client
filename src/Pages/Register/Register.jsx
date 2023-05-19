@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 const Register = () => {
-  const { createUser, googleSignIn } = useContext(AuthContext);
+  const { createUser, googleSignIn, updateUserProfile } =
+    useContext(AuthContext);
+
+  const [createdUser, setCreatedUser] = useState(null);
 
   const handleGoogle = () => {
     googleSignIn()
@@ -27,6 +30,10 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
+        setCreatedUser(createdUser);
+        return updateUserProfile(name, photo);
+      })
+      .then(() => {
         console.log(createdUser);
       })
       .catch((error) => {
