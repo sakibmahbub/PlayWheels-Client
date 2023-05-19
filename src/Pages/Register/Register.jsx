@@ -1,6 +1,28 @@
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photo = form.photo.value;
+
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="my-10">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -9,7 +31,7 @@ const Register = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl lg:text-3xl ">
               Please Register
             </h1>
-            <form className="space-y-4 md:space-y-6 ">
+            <form onSubmit={handleRegister} className="space-y-4 md:space-y-6 ">
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900 ">
                   Name
@@ -63,7 +85,7 @@ const Register = () => {
                 type="submit"
                 className="w-full text-white bg-yellow-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
               >
-                Login
+                Register
               </button>
               <p className="text-sm font-light text-gray-700 ">
                 Already have an account?
