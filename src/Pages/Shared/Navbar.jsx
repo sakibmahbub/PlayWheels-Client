@@ -83,7 +83,7 @@ const Navbar = () => {
           <li>
             {user && (
               <button
-                className="btn bg-yellow-500 btn-sm border-none"
+                className="btn bg-gray-900 btn-sm border-none"
                 onClick={handleLogout}
               >
                 Logout
@@ -91,7 +91,7 @@ const Navbar = () => {
             )}
             {!user && (
               <Link to="/login">
-                <button className="btn bg-yellow-500 btn-sm border-none">
+                <button className="btn bg-gray-900 btn-sm border-none">
                   Login
                 </button>
               </Link>
