@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import AllToyRow from "./AllToyRow";
+import useTitle from "../../Hooks/useTitle";
 
 const AllToys = () => {
+  useTitle("All Toys");
   const [searchQuery, setSearchQuery] = useState("");
   const toys = useLoaderData();
 

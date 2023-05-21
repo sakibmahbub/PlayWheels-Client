@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import MyToyRow from "./MyToyRow";
 import Swal from "sweetalert2";
+import useTitle from "../../Hooks/useTitle";
 
 const MyToys = () => {
+  useTitle("My Toys");
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");

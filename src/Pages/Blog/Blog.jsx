@@ -1,4 +1,7 @@
+import useTitle from "../../Hooks/useTitle";
+
 const Blog = () => {
+  useTitle("Blog");
   return (
     <div className="my-20">
       <div className="card w-1/2 mx-auto bg-base-100 shadow-lg my-10">

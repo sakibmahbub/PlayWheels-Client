@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 const Register = () => {
+  useTitle("Register");
   const { createUser, googleSignIn, updateUserProfile } =
     useContext(AuthContext);
 
