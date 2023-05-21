@@ -17,7 +17,7 @@ const Banner = () => {
             Where Fun <br /> Takes the Wheel!
           </h1>
           <p
-            className="mb-6 w-2/5
+            className="mb-6 lg:w-2/5
           "
           >
             Welcome to the ultimate destination for car toy enthusiasts! Explore

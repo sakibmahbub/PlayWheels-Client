@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const MyToyRow = ({ toy, handleDelete }) => {
   const { user } = useContext(AuthContext);
+
   const { _id, picture, name, description, price, quantity } = toy;
   return (
     <tr>

@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: "/alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/toys"),
+        loader: () => fetch("https://play-wheels-server.vercel.app/toys"),
       },
       {
         path: "/mytoys",
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/toys/${params.id}`),
+          fetch(`https://play-wheels-server.vercel.app/toys/${params.id}`),
       },
       {
         path: "/blog",

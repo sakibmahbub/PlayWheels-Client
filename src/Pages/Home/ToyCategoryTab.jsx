@@ -14,11 +14,11 @@ const ToyCategoryTab = ({ toys }) => {
 
   return (
     <Tabs>
-      <TabList className="flex mb-4">
+      <TabList className="flex flex-wrap mb-4">
         {subCategories.map((subCategory) => (
           <Tab
             key={subCategory}
-            className={` py-2 px-4 rounded-l-lg mx-auto cursor-pointer`}
+            className={`py-2 px-4 rounded-l-lg mx-auto cursor-pointer`}
             selectedClassName="bg-gray-900 text-white border-0"
           >
             {subCategory}
@@ -28,7 +28,7 @@ const ToyCategoryTab = ({ toys }) => {
 
       {subCategories.map((subCategory) => (
         <TabPanel key={subCategory}>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {toys
               .filter((toy) => toy["sub_category"] === subCategory)
               .map((toy) => (
@@ -39,7 +39,7 @@ const ToyCategoryTab = ({ toys }) => {
                   <img
                     src={toy.picture}
                     alt={toy.name}
-                    className="w-52 h-40 object-cover mb-4"
+                    className="w-full h-40 object-cover mb-4"
                   />
                   <h3 className="text-lg font-semibold mb-2">{toy.name}</h3>
                   <p className="text-gray-600 mb-2">Price: ${toy.price}</p>

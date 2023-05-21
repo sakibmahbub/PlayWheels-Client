@@ -9,7 +9,7 @@ const MyToys = () => {
 
   useEffect(() => {
     if (user) {
-      const url = `http://localhost:5000/toys?email=${user.email}`;
+      const url = `https://play-wheels-server.vercel.app/toys?email=${user.email}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => setMyToys(data))
@@ -27,7 +27,7 @@ const MyToys = () => {
       cancelButtonText: "No, keep it",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toys/${id}`, {
+        fetch(`https://play-wheels-server.vercel.app/toys/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
