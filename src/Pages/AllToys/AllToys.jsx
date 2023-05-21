@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import AllToyTable from "./AllToyTable";
+import AllToyRow from "./AllToyRow";
 
 const AllToys = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -43,7 +43,7 @@ const AllToys = () => {
           </thead>
           <tbody>
             {filteredToys.map((toy) => (
-              <AllToyTable key={toy._id} toy={toy} />
+              <AllToyRow key={toy._id} toy={toy}></AllToyRow>
             ))}
           </tbody>
         </table>
