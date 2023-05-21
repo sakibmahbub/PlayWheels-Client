@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const MyToyRow = ({ toy }) => {
   const { user } = useContext(AuthContext);
-  const { picture, seller, name, sub_category, price, quantity } = toy;
+  const { picture, name, description, price, quantity } = toy;
   return (
     <tr>
       <td>
@@ -15,15 +15,32 @@ const MyToyRow = ({ toy }) => {
           </div>
         </div>
       </td>
-      <td>{seller}</td>
       <td>{name}</td>
-      <td>{sub_category}</td>
       <td>${price}</td>
       <td>{quantity}</td>
+      <td>{description}</td>
       <th>
-        <Link to={`/toy/${toy._id}`}>
-          <button className="btn btn-sm bg-gray-900 mt-2">View Details</button>
+        <Link to={``}>
+          <button className="btn btn-sm bg-gray-900 mt-2">Update Toy</button>
         </Link>
+      </th>
+      <th>
+        <button className="btn btn-square btn-sm">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </th>
     </tr>
   );

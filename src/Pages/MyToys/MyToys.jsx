@@ -17,22 +17,21 @@ const MyToys = () => {
   }, [user]);
 
   return (
-    <div>
-      <h2>My Toys: {myToys.length}</h2>
+    <div className="my-20">
+      <h2 className="text-4xl font-bold text-center mb-10">
+        My Toys: {myToys.length}
+      </h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full mt-10 px-20">
           <thead>
             <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
               <th>Toy Image</th>
               <th>Name</th>
               <th>Price</th>
               <th>Available Quantity</th>
               <th>Description</th>
+              <th>Update Toy</th>
+              <th>Delete Toy</th>
               <th></th>
             </tr>
           </thead>
