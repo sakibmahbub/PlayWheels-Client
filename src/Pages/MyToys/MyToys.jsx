@@ -6,16 +6,17 @@ import Swal from "sweetalert2";
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     if (user) {
-      const url = `https://play-wheels-server.vercel.app/toys?email=${user.email}`;
+      const url = `https://play-wheels-server.vercel.app/toys?email=${user.email}&sort=${sortOrder}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => setMyToys(data))
         .catch((error) => console.error("Error retrieving toys:", error));
     }
-  }, [user]);
+  }, [user, sortOrder]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -40,10 +41,16 @@ const MyToys = () => {
               );
               const remaining = myToys.filter((toy) => toy._id !== id);
               setMyToys(remaining);
+              setSortOrder("asc"); // Reset sorting order after deletion
             }
           });
       }
     });
+  };
+
+  const toggleSortOrder = () => {
+    const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newSortOrder);
   };
 
   return (
@@ -60,7 +67,11 @@ const MyToys = () => {
               <th>Description</th>
               <th>Update Toy</th>
               <th>Delete Toy</th>
-              <th></th>
+              <th>
+                <button onClick={toggleSortOrder}>
+                  Sort by Price ({sortOrder === "asc" ? "Asc" : "Desc"})
+                </button>
+              </th>
             </tr>
           </thead>
           <tbody>
