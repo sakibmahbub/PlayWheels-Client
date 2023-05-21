@@ -18,12 +18,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#ffffff] mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-20 lg:px-20 relative rounded-lg z-20">
+    <div className="bg-yellow-50 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-20 lg:px-20 relative rounded-lg z-20">
       <div className="relative flex items-center justify-between">
         <Link to="/" className="inline-flex items-center">
           <img
             className="w-32 h-32"
-            src="https://i.ibb.co/K78JKYy/1.png"
+            src="https://i.ibb.co/k9BGdSQ/logo.png"
             alt="playwheels"
           />
         </Link>
@@ -34,7 +34,7 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={
-                location.pathname === "/" ? "text-[#BC1823]" : "default"
+                location.pathname === "/" ? "text-gray-500 " : "default"
               }
             >
               Home
@@ -44,37 +44,44 @@ const Navbar = () => {
             <NavLink
               to="/alltoys"
               className={
-                location.pathname === "/alltoys" ? "text-[#BC1823]" : "default"
+                location.pathname === "/alltoys" ? "text-gray-500 " : "default"
               }
             >
               All Toys
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/mytoys"
-              className={
-                location.pathname === "/mytoys" ? "text-[#BC1823]" : "default"
-              }
-            >
-              My Toys
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/addatoy"
-              className={
-                location.pathname === "/addatoy" ? "text-[#BC1823]" : "default"
-              }
-            >
-              Add A Toy
-            </NavLink>
-          </li>
+
+          {user && (
+            <li>
+              <NavLink
+                to="/mytoys"
+                className={
+                  location.pathname === "/mytoys" ? "text-gray-500 " : "default"
+                }
+              >
+                My Toys
+              </NavLink>
+            </li>
+          )}
+          {user && (
+            <li>
+              <NavLink
+                to="/addatoy"
+                className={
+                  location.pathname === "/addatoy"
+                    ? "text-gray-500 "
+                    : "default"
+                }
+              >
+                Add A Toy
+              </NavLink>
+            </li>
+          )}
           <li>
             <NavLink
               to="/blog"
               className={
-                location.pathname === "/blog" ? "text-[#BC1823]" : "default"
+                location.pathname === "/blog" ? "text-gray-500 " : "default"
               }
             >
               Blog
@@ -171,7 +178,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/blog"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
+                        className="font-medium tracking-wide text-gray-500 transition-colors duration-200 hover:text-blue-400"
                       >
                         Blog
                       </Link>

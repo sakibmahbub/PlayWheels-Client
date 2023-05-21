@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import Swal from "sweetalert2";
+
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const ToyCategoryTab = ({ toys }) => {
+  const { user } = useContext(AuthContext);
   const subCategories = Array.from(
     new Set(toys.map((toy) => toy["sub_category"]))
   );
@@ -40,7 +45,17 @@ const ToyCategoryTab = ({ toys }) => {
                   <p className="text-gray-600 mb-2">Price: ${toy.price}</p>
                   <p className="text-gray-600 mb-2">Rating: {toy.rating}</p>
                   <Link to={`/toy/${toy._id}`}>
-                    <button className="btn btn-sm bg-gray-900 mt-2">
+                    <button
+                      className="btn btn-sm bg-gray-900 mt-2"
+                      onClick={() => {
+                        if (!user) {
+                          Swal.fire({
+                            icon: "error",
+                            text: "You have to log in first to view details",
+                          });
+                        }
+                      }}
+                    >
                       View Details
                     </button>
                   </Link>

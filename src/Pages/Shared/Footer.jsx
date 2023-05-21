@@ -4,8 +4,8 @@ const Footer = () => {
   return (
     <div>
       <footer className="footer p-10 w-full bg-yellow-50 text-base-content">
-        <div className="w-52 h-52">
-          <img src="https://i.ibb.co/K78JKYy/1.png" alt="playwheels" />
+        <div className="w-40 h-40">
+          <img src="https://i.ibb.co/k9BGdSQ/logo.png" alt="playwheels" />
         </div>
         <div>
           <span className="footer-title">Services</span>
