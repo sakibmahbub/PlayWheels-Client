@@ -41,7 +41,7 @@ const MyToys = () => {
               );
               const remaining = myToys.filter((toy) => toy._id !== id);
               setMyToys(remaining);
-              setSortOrder("asc"); // Reset sorting order after deletion
+              setSortOrder("asc");
             }
           });
       }
@@ -56,6 +56,7 @@ const MyToys = () => {
   return (
     <div className="my-20">
       <h2 className="text-4xl font-bold text-center mb-10">My Toys</h2>
+
       <div className="overflow-x-auto w-full">
         <table className="table w-full mt-10 px-20">
           <thead>
