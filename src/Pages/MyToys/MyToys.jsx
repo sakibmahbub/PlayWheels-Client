@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import MyToyRow from "./MyToyRow";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -16,11 +17,38 @@ const MyToys = () => {
     }
   }, [user]);
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this toy!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, keep it",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/toys/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "The toy has been deleted successfully.",
+                "success"
+              );
+              const remaining = myToys.filter((toy) => toy._id !== id);
+              setMyToys(remaining);
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div className="my-20">
-      <h2 className="text-4xl font-bold text-center mb-10">
-        My Toys: {myToys.length}
-      </h2>
+      <h2 className="text-4xl font-bold text-center mb-10">My Toys</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full mt-10 px-20">
           <thead>
@@ -37,7 +65,7 @@ const MyToys = () => {
           </thead>
           <tbody>
             {myToys.map((toy) => (
-              <MyToyRow key={toy._id} toy={toy} />
+              <MyToyRow key={toy._id} toy={toy} handleDelete={handleDelete} />
             ))}
           </tbody>
         </table>

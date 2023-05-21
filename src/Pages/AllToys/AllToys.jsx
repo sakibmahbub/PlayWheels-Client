@@ -16,9 +16,7 @@ const AllToys = () => {
 
   return (
     <div className="my-20">
-      <h2 className="text-4xl font-bold mb-10 text-center">
-        Total Toys: {filteredToys.length}
-      </h2>
+      <h2 className="text-4xl font-bold mb-10 text-center">All Toys</h2>
       <div className="flex justify-center my-4">
         <input
           type="text"
